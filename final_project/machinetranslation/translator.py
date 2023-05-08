@@ -1,7 +1,7 @@
 import json
+import os
 from ibm_watson import LanguageTranslatorV3, ApiException
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import os
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -25,10 +25,8 @@ def english_to_french(english_text):
         text=english_text,
         model_id='en-fr').get_result()
         print(json.dumps(french_text, indent=2, ensure_ascii=False))
-    
     except ApiException as ex:
         print("Method failed with status code " + str(ex.code) + ": " + ex.message)
-    
     return french_text
 
 def french_to_english(french_text):
@@ -38,13 +36,6 @@ def french_to_english(french_text):
         text=french_text,
         model_id='fr-en').get_result()
         print(json.dumps(english_text, indent=2, ensure_ascii=False))
-
     except ApiException as ex:
         print("Method failed with status code " + str(ex.code) + ": " + ex.message)
-    
     return english_text
-
-
-if __name__ == '__main__':
-    french_text = "Bonjour"
-    x = french_to_english(french_text)
