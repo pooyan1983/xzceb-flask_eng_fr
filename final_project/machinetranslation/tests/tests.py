@@ -1,7 +1,7 @@
 import unittest
 from unittest import TestCase
-from translator import english_to_french
-from translator import french_to_english
+from machinetranslation.translator import english_to_french
+from machinetranslation.translator import french_to_english
 
 class TestTranslator(TestCase):
 
