@@ -24,10 +24,10 @@ def english_to_french(english_text):
         french_text = language_translator.translate(
         text=english_text,
         model_id='en-fr').get_result()
-        print(json.dumps(french_text, indent=2, ensure_ascii=False))
+        # print(json.dumps(french_text, indent=2, ensure_ascii=False))
     except ApiException as ex:
         print("Method failed with status code " + str(ex.code) + ": " + ex.message)
-    return french_text
+    return french_text["translations"][0]["translation"]
 
 def french_to_english(french_text):
     #write the code here
@@ -35,7 +35,7 @@ def french_to_english(french_text):
         english_text = language_translator.translate(
         text=french_text,
         model_id='fr-en').get_result()
-        print(json.dumps(english_text, indent=2, ensure_ascii=False))
+        # print(json.dumps(english_text, indent=2, ensure_ascii=False))
     except ApiException as ex:
         print("Method failed with status code " + str(ex.code) + ": " + ex.message)
-    return english_text
+    return english_text["translations"][0]["translation"]
